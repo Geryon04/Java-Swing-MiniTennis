@@ -33,6 +33,7 @@ public class Game extends JPanel{
 			}
 		});
 		setFocusable(true);
+		Sound.BACK.loop();
 	}
 	
 	private void move() {
@@ -50,6 +51,8 @@ public class Game extends JPanel{
 	}
 	
 	public void gameOver() {
+		Sound.BACK.stop();
+		Sound.GAMEOVER.play();
 		JOptionPane.showMessageDialog(this, "Game Over", "Game Over", JOptionPane.YES_NO_OPTION);
 		System.exit(ABORT);
 	}

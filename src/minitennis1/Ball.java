@@ -16,19 +16,23 @@ public class Ball {
 	}
 	
 	void move() {
+		boolean changeDirection = true;
 		if (x + xa < 0)
 			xa = 1;
-		if (x + xa > game.getWidth() - DIAMETER)
+		else if (x + xa > game.getWidth() - DIAMETER)
 			xa = -1;
-		if (y + ya < 0)
+		else if (y + ya < 0)
 			ya = 1;
-		if (y + ya > game.getHeight() - DIAMETER)
+		else if (y + ya > game.getHeight() - DIAMETER)
 			game.gameOver();
-		if(collision()) {
+		else if (collision()){
 			ya = -1;
 			y = game.racquet.getTopY() - DIAMETER;
-		}
-
+		} else 
+			changeDirection = false;
+		
+		if (changeDirection) 
+			Sound.BALL.play();
 		x = x + xa;
 		y = y + ya;
 	}
