@@ -15,6 +15,11 @@ public class Game extends JPanel{
 	
 	Ball ball = new Ball(this);
 	Racquet racquet = new Racquet(this);
+	int speed = 1;
+
+	private int getScore() {
+		return speed - 1;
+	}
 	
 	public Game() {
 		addKeyListener(new KeyListener() {
